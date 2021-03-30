@@ -26,9 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const tTetromio = [
     [1, width, width + 1, width + 2],
-    [1, width, width + 1, width * 2 + 1],
+    [1, width + 1, width + 2, width * 2 + 1],
     [width, width + 1, width + 2, width * 2 + 1],
-    [1, width + 2, width + 1, width * 2 + 1],
+    [1, width, width + 1, width * 2 + 1],
   ];
 
   const oTetromino = [
@@ -192,7 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // the Tetrominos without rotations
   const upNextTetrominoes = [
     [1, displayWidth + 1, displayWidth * 2 + 1, 2], // lTetromino
-    [0, displayWidth, displayWidth + 1, displayWidth * 2 * 1], // zTetromino
+    [0, displayWidth, displayWidth + 1, displayWidth * 2 + 1], // zTetromino
     [1, displayWidth, displayWidth + 1, displayWidth + 2], // tTetromino
     [0, 1, displayWidth, displayWidth + 1], // oTetromino
     [1, displayWidth + 1, displayWidth * 2 + 1, displayWidth * 3 + 1], //iTetromino
@@ -251,6 +251,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         const squaresRemoved = squares.splice(i, width);
         //console.log(squaresRemoved);
+        squares = squaresRemoved.concat(squares);
         squares.forEach((cell) => grid.appendChild(cell));
       }
     }
